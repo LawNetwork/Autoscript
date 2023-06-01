@@ -4,7 +4,7 @@ clear
 source /root/Autoscript/color.sh
 
 date
-domain=$(cat /root/domain)
+domain=$(cat /root/fvckyou/domain)
 
 mkdir -p /etc/xray
 echo -e "[ ${green}INFO${none} ] Checking..."; apt install -y iptables iptables-persistent; sleep 1
