@@ -2,6 +2,7 @@
 
 clear
 cd
+mkdir -p /etc/xray
 cat > /etc/xray/config.json << END
 {
   "log" : {
