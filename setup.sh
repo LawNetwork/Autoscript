@@ -23,7 +23,8 @@ red() { echo -e "\\033[31;1m${*}\\033[0m";}
 
 # Or you can use colors from color.sh
 source /root/Autoscript/addons/color.sh
-
+cp /root/Autoscript/color.sh /root/Autoscript/color.sh
+cp /root/Autoscript/color.sh /root/color.sh
 ############################################## LawNET ##############################################
 
 # Checking Virtualization
