@@ -1,0 +1,34 @@
+#!/bin/bash
+cd
+
+clear
+echo -ne "Input your daily reboot hour (0-23): "; read
+
+if [ "$plan" -ge 0 ] && [ "$plan" -le 23 ]; then
+cat > /etc/cron.d/re_otm <<-END
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+0 ${plan} * * * root /sbin/reboot
+END
+    echo -e "Setting up daily autoreboot..."; sleep 3; clear
+    echo -e "Input autoreboot plan (0-23): ${plan}"; sleep 1
+    echo -e "Daily autoreboot has been set up to ${plan}.00 GMT+7"
+    sleep 3
+else
+    echo "Please input only 0-23!"
+    sleep 1
+    autoreboot
+fi
+
+cat > /etc/cron.d/xp_otm <<-END
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+2 0 * * * root /usr/bin/xp
+END
+
+cat > /home/re_otm <<-END
+$plan
+END
+
+service cron restart >/dev/null 2>&1
+service cron reload >/dev/null 2>&1

@@ -1,0 +1,79 @@
+#!/bin/bash
+# ==========================================
+# Color
+source /root/Autoscript/addons/color.sh
+# ==========================================
+# Getting
+MYIP=$(wget -qO- ipinfo.io/ip);
+
+apt install rclone -y
+printf "q\n" | rclone config
+
+rm /root/.config/rclone/rclone.conf
+mv /root/Autoscript/addons/rclone.conf /root/.config/rclone/rclone.conf
+
+cd
+git clone  https://github.com/magnific0/wondershaper.git
+cd wondershaper
+make install
+cd
+rm -rf wondershaper
+
+echo > /home/limit
+apt install msmtp-mta ca-certificates bsd-mailx -y
+
+clear
+
+cat<<EOF>>/etc/msmtprc
+defaults
+tls on
+tls_starttls on
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+
+account default
+host smtp.gmail.com
+port 587
+auth on
+user bckupvpns@gmail.com
+from bckupvpns@gmail.com
+password Yangbaru1Yangbaru1cuj
+logfile ~/.msmtp.log
+EOF
+
+clear
+echo -e "Do you want to add autobackup? You need to connect your email into your vps"
+echo -e "I can make sure only you who can see the email you entered, even the owner of this script doesnt"
+echo -ne "Type y if you agree (y/n): "; read confirm
+if [ "$confirm" == "${confirm[Yy]}" ]; then
+    echo -ne "Enter your email  : "; read email
+    echo -ne "Enter your pass   : "; read epass
+    cat<<EOF>>/etc/msmtprc
+defaults
+tls on
+tls_starttls on
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+
+account default
+host smtp.gmail.com
+port 587
+auth on
+user $email
+from $email
+password $epass
+logfile ~/.msmtp.log
+EOF
+
+fi
+
+chown -R www-data:www-data /etc/msmtprc
+cd /usr/bin
+rm autobackup backup restore limitspeed
+mv /root/Autoscript/addons/autobackup /usr/bin/autobackup
+mv /root/Autoscript/addons/backup /usr/bin/backup
+mv /root/Autoscript/addons/restore /usr/bin/restore
+mv /root/Autoscript/addons/limitspeed /usr/bin/limitspeed
+
+cp /root/Autoscript/addons/color.sh /root/color
+
+cd
+rm -f /root/set-br.sh

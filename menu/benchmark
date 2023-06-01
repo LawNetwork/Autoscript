@@ -1,0 +1,126 @@
+#!/bin/bash
+
+source /root/color
+source /root/color.sh
+
+mkdir /etc/Lawnetwork
+
+clear
+if [ -f /etc/Lawnetwork/benchmarktest ]; then
+    echo "${yellow}You already did benchmark test before";
+    echo "${yellow}Do you want to test again or see the last result?"; sleep 3
+    echo "${yellow}Type ${red}1 ${yellow}to test again";
+    echo "${yellow}Type ${red}2 ${yellow}to see the last result";
+    echo -e ""
+    echo -ne "${none}Choose 1 or 2: "; read opt
+    if [ "$opt" = 1 ]; then
+        clear
+        echo "Benchmark test is in progress..."; sleep 2
+        echo "Do not exit at this step!"; sleep 2
+        echo "What? You cannot see the progress runs?"; sleep 5
+        echo "Nah, nah..  Thats not good"; sleep 2
+        echo "Now i got an offer for you"; sleep 2
+        echo "Apa? Gak ngerti bahasa inggris?"; sleep 2
+        echo "Parah si udah gede juga.."; sleep 2
+        echo "Maaf ya kamu saya tinggal"; sleep 2
+        echo "Type ${red}1 ${none}if you want to see the progress (This will not save the result)"
+        echo "Type ${red}0 ${none}to continue without seeing the progress (This will save the result after the progress ends)"
+        echo -ne "Choose: "; read cont
+        if [ "$cont" = 1 ]; then
+            clear
+            wget -qO- bench.sh | bash
+            read -n 1 -s -r -p "  Press any key to back on menu"
+            menu-set
+        elif [ "$cont" = 0 ]; then
+            clear
+            echo "Benchmark test is in progress..."; sleep 2
+            echo "Do not exit at this step!"; sleep 2
+            echo "this will take up to 5 minutes or more"; sleep 2
+            echo "Press ctrl+c to cancel benchmark test"
+            bmark=$(wget -qO- bench.sh | bash)
+            rm /etc/Lawnetwork/benchmarktest
+            echo -e "$bmark" > /etc/Lawnetwork/benchmarktest
+            echo "Do you still waiting?"; sleep 2
+            echo "Hell no!"; sleep 2
+            echo "See? im right that youre a patient man! Im so thankful for it"; sleep 2
+            clear
+            cat /etc/Lawnetwork/benchmarktest
+            echo ""
+            
+            read -n 1 -s -r -p "  Press any key to back on menu"
+            menu-set
+        fi
+        
+    elif [ "$opt" = 2 ]; then
+        clear
+        cat /etc/Lawnetwork/benchmarktest
+        echo ""
+        read -n 1 -s -r -p "  Press any key to back on menu"
+        menu-set
+    else
+        echo "Choose only 1 or 2!"
+        menu-set
+    fi
+else
+    clear
+    echo "Benchmark test is in progress..."; sleep 2
+    echo "Do not exit at this step!"; sleep 2
+    echo "What? You cannot see the progress runs?"; sleep 5
+    echo "Nah, nah..  Thats not good"; sleep 2
+    echo "Now i got an offer for you"; sleep 2
+    echo "Apa? Gak ngerti bahasa inggris?"; sleep 2
+    echo "Parah si udah gede juga.."; sleep 2
+    echo "Maaf ya kamu saya tinggal"; sleep 2
+    echo "Type ${red}1 ${none}if you want to see the progress (This will not save the result)"
+    echo "Type ${red}0 ${none}to continue without seeing the progress (This will save the result after the progress ends)"
+    echo -ne "Choose: "; read cont
+    if [ "$cont" = 1 ]; then
+        clear
+        wget -qO- bench.sh | bash
+        read -n 1 -s -r -p "  Press any key to back on menu"
+        menu-set
+    elif [ "$cont" = 0 ]; then
+        clear
+        echo "Benchmark test is in progress..."; sleep 2
+        echo "Do not exit at this step!"; sleep 2
+        echo "This will take up to 5 minutes, more, or less depends on your vps specs"; sleep 2
+        echo "Press ctrl+c to cancel benchmark test"
+        bmark=$(wget -qO- bench.sh | bash)
+        rm /etc/Lawnetwork/benchmarktest
+        echo -e "$bmark" > /etc/Lawnetwork/benchmarktest
+        echo "Do you still waiting?"; sleep 2
+        echo "Hell no!"; sleep 2
+        echo "See? im right that youre a patient man! Im so thankful for it"; sleep 2
+        clear
+        cat /etc/Lawnetwork/benchmarktest
+        echo ""
+        
+        read -n 1 -s -r -p "  Press any key to back on menu"
+        menu-set
+    else
+        clear; ${blue}
+        echo -e "Please just enter 1 or 0 you dumbass -_-"; sleep 5
+        echo -e "Sorry i didnt mean that"; sleep 2; clear
+        echo -e "Please just enter 1 or 0 you dumbass -_-";
+        echo -e "Sorry i didnt mean that -"; sleep 1; clear
+        echo -e "Please just enter 1 or 0 you dumbass -_-";
+        echo -e "Sorry i didnt mean that --"; sleep 1; clear
+        echo -e "Please just enter 1 or 0 you dumbass -_-";
+        echo -e "Sorry i didnt mean that ---"; sleep 1; clear
+        echo -e "Please just enter 1 or 0 you dumbass -_-";
+        echo -e "Sorry i didnt mean that @-@"; sleep 0.5; clear
+        echo -e "Please just enter 1 or 0 you dumbass -_-";
+        echo -e "Sorry i didnt mean that ---"; sleep 0.5; clear
+        echo -e "Please just enter 1 or 0 you dumbass -_-";
+        echo -e "Sorry i didnt mean that @-@"; sleep 0.5; clear
+        echo -e "Please just enter 1 or 0 you dumbass -_-";
+        echo -e "Sorry i didnt mean that ---"; sleep 0.5; clear
+        echo -e "Please just enter 1 or 0 you dumbass -_-";
+        echo -e "Sorry i didnt mean that ^-^"; sleep 3
+        echo "Lets start again, choose the right option, please"; sleep 5
+        clear; ${none}
+        benchmark
+    fi
+fi
+
+clear

@@ -1,0 +1,39 @@
+#!/bin/bash
+red='\e[1;31m'
+green='\e[0;32m'
+NC='\e[0m'
+
+IP=$(cat /root/ip);
+domain=$(cat /etc/xray/domain)
+
+read -p "Username : " Login
+read -p "Password : " Pass
+
+useradd -s /bin/false -M $Login
+exp="$(chage -l $Login | grep "Account expires" | awk -F": " '{print $2}')"
+echo -e "$Pass\n$Pass\n"|passwd $Login &> /dev/null
+echo -e ""
+echo -e "Thank You For Using Our Services"
+echo -e "SSH Account Info"
+echo -e "Username         : $Login "
+echo -e "Password         : $Pass"
+echo -e "==============================="
+echo -e "Domain           : $domain"
+echo -e "Host             : $domain"
+echo -e "OpenSSH          : "
+echo -e "Dropbear         : 109, 143"
+echo -e "SSL/TLS          : 443"
+echo -e "Port Squid       : "
+echo -e "Websocket HTTP   : 80"
+echo -e "Websocket HTTPS  : 443"
+echo -e "badvpn           : 7100-7900"
+echo -e "==============================="
+echo -e "PAYLOAD"                                                          
+echo -e "GET wss://[host]/ HTTP/1.1[crlf]Host: [proxy][crlf]Upgrade: websocket[crlf][crlf]"
+echo -e "==============================="
+echo -e "SETTING PROXY HOST"
+echo -e "bug.com:443"
+echo -e "==============================="
+echo -e "SETING HOST SSH"               
+echo -e "$domain:443@$Login:$Pass"
+echo -e "==============================="
