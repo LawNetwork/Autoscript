@@ -132,6 +132,7 @@ echo "$domain" > /root/scdomain
 echo "$domain" > /etc/xray/domain
 echo "$domain" > /etc/xray/scdomain
 echo "IP=$domain" > /var/lib/Lawnet-pro/ipvps.conf
+echo "$domain" > /etc/fvckyou/domain
 
 # Adding themes
 #mkdir -p /etc/Lawnetwork/theme
