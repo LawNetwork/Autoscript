@@ -1,5 +1,6 @@
 #!/bin/bash
 
+mkdir -p /etc/systemd/system
 cat <<EOF> /etc/systemd/system/xray.service
 Description=Xray Service
 Documentation=https://github.com/xtls
