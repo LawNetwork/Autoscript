@@ -98,7 +98,7 @@ yellow "xray/Vmess"
 yellow "xray/Vless"
 sleep 1
 
-cp /root/domain /etc/xray/ 
+cp /root/fvckyou/domain /etc/xray/domain
 if [ -f /root/scdomain ];then
 rm /root/scdomain > /dev/null 2>&1
 fi
