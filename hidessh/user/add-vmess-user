@@ -102,13 +102,13 @@ echo -e "Remarks : ${user}" | tee -a /etc/log-create-user.log
 echo -e "Domain : ${domain}" | tee -a /etc/log-create-user.log
 echo -e "Port TLS : ${tls}" | tee -a /etc/log-create-user.log
 echo -e "Port none TLS : ${none}" | tee -a /etc/log-create-user.log
-echo -e "Port  GRPC : " | tee -a /etc/log-create-user.log
+echo -e "Port  GRPC : $tls" | tee -a /etc/log-create-user.log
 echo -e "id : ${user}" | tee -a /etc/log-create-user.log
 echo -e "alterId : 0" | tee -a /etc/log-create-user.log
 echo -e "Security : auto" | tee -a /etc/log-create-user.log
 echo -e "Network : ws" | tee -a /etc/log-create-user.log
-echo -e "Path : /vmess-tls" | tee -a /etc/log-create-user.log
-echo -e "ServiceName : " | tee -a /etc/log-create-user.log
+echo -e "Path : /vmess" | tee -a /etc/log-create-user.log
+echo -e "ServiceName : vmess-grpc" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
 echo -e "Link TLS : ${vmesslink1}" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
