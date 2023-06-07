@@ -19,6 +19,6 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 #
 
 0 0 * * * root xp
-*/2 * * * * root clear-log
+*/5 * * * * root clear-log
 5 0 * * * root backup
 END
