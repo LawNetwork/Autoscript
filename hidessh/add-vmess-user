@@ -74,17 +74,20 @@ ask=`cat<<EOF
 EOF`
 grpc=`cat<<EOF
       {
-      "v": "2",
-      "ps": "${user}",
       "add": "${domain}",
-      "port": "443",
-      "id": "${uuid}",
       "aid": "0",
-      "net": "vmess-grpc",
-      "path": "",
-      "type": "none",
-      "host": "${domain}",
-      "tls": "tls"
+      "alpn": "",
+      "host": "",
+      "id": "${uuid}",
+      "net": "grpc",
+      "path": "vmess-grpc",
+      "port": "443",
+      "ps": "${user}",
+      "scy": "auto",
+      "sni": "${domain}",
+      "tls": "tls",
+      "type": "gun",
+      "v": "2"
 }
 EOF`
 vmess_base641=$( base64 -w 0 <<< $vmess_json1)
