@@ -5,8 +5,8 @@ biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 
 MYIP=$(curl -sS ipv4.icanhazip.com)
 domain=$(cat /etc/xray/domain)
-pathtrojan=/trojan
-#pathtrojangprc=$(cat /usr/local/hidessh/trojangprc.txt)
+pathtrojan="/yudhynet"
+pathtrojangprc="trojan-grpc"
 none=80
 tls=443
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
@@ -30,7 +30,7 @@ if [[ "$uuid" == "" ]]; then
  exit 1
 fi
 
-masaaktif=90
+masaaktif=360
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 sed -i '/#trojanws$/a\#! '"$user $exp"'\
 },{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
@@ -48,9 +48,9 @@ echo -e "━━━━━━━━━━━━━━━━━━━━━━━�
 echo -e "Remarks : ${user}" | tee -a /etc/log-create-user.log
 echo -e "Host/IP : ${domain}" | tee -a /etc/log-create-user.log
 echo -e "port : ${tls}" | tee -a /etc/log-create-user.log
-echo -e "Key : ${user}" | tee -a /etc/log-create-user.log
+echo -e "Key : ${uuid}" | tee -a /etc/log-create-user.log
 echo -e "Path : ${pathtrojan}" | tee -a /etc/log-create-user.log
-echo -e "ServiceName : " | tee -a /etc/log-create-user.log
+echo -e "ServiceName : ${pathtrojangprc}" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
 echo -e "Link WS : ${trojanlink}" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
