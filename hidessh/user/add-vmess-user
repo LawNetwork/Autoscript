@@ -40,17 +40,17 @@ clear
 masaaktif=360
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 sed -i '/#vmess$/a\### '"$user $exp"'\
-},{"id": "'""$user${numbRandom}""'","alterId": '"0"',"email": "'""$user""'"' /etc/xray/config.json
+},{"id": "'""${user}_${numbRandom}""'","alterId": '"0"',"email": "'""$user""'"' /etc/xray/config.json
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 sed -i '/#vmessgrpc$/a\### '"$user $exp"'\
-},{"id": "'""$user${numbRandom}""'","alterId": '"0"',"email": "'""$user""'"' /etc/xray/config.json
+},{"id": "'""${user}_${numbRandom}""'","alterId": '"0"',"email": "'""$user""'"' /etc/xray/config.json
 asu=`cat<<EOF
       {
       "v": "2",
       "ps": "${user}",
       "add": "${domain}",
       "port": "443",
-      "id": "${user}${numbRandom}",
+      "id": "${user}_${numbRandom}",
       "aid": "0",
       "net": "ws",
       "path": "/vmess",
@@ -65,7 +65,7 @@ ask=`cat<<EOF
       "ps": "${user}",
       "add": "${domain}",
       "port": "80",
-      "id": "${user}${numbRandom}",
+      "id": "${user}_${numbRandom}",
       "aid": "0",
       "net": "ws",
       "path": "/vmess",
@@ -80,7 +80,7 @@ grpc=`cat<<EOF
       "aid": "0",
       "alpn": "",
       "host": "",
-      "id": "${user}${numbRandom}",
+      "id": "${user}_${numbRandom}",
       "net": "grpc",
       "path": "vmess-grpc",
       "port": "443",
@@ -109,7 +109,7 @@ echo -e "Domain : ${domain}" | tee -a /etc/log-create-user.log
 echo -e "Port TLS : ${tls}" | tee -a /etc/log-create-user.log
 echo -e "Port none TLS : ${none}" | tee -a /etc/log-create-user.log
 echo -e "Port  GRPC : $tls" | tee -a /etc/log-create-user.log
-echo -e "id : ${user}${numbRandom}" | tee -a /etc/log-create-user.log
+echo -e "id : ${user}_${numbRandom}" | tee -a /etc/log-create-user.log
 echo -e "alterId : 0" | tee -a /etc/log-create-user.log
 echo -e "Security : auto" | tee -a /etc/log-create-user.log
 echo -e "Network : ws" | tee -a /etc/log-create-user.log
