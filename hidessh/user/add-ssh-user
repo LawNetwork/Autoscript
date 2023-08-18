@@ -55,7 +55,7 @@ MESSAGE="<pre>┌─────────────────────
          SSH INFORMATION
 └───────────────────────────┘
 ┌───────────────────────────┐
-  Domain   : \$lastdomain
+  ISP      : \$lastdomain
   Username : \$Login
   Status   : Created account
 └───────────────────────────┘</pre>"
