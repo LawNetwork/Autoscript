@@ -21,21 +21,22 @@ echo -e "==============================="
 echo -e "Domain           : $domain"
 echo -e "Host             : $domain"
 echo -e "OpenSSH          : "
-echo -e "Dropbear         : 109, 143"
+echo -e "Dropbear         : 109, 143, 443"
 echo -e "SSL/TLS          : 443"
 echo -e "Port Squid       : "
 echo -e "Websocket HTTP   : 80"
 echo -e "Websocket HTTPS  : 443"
-echo -e "badvpn           : 7100-7900"
+echo -e "badvpn           : 7100-7300"
 echo -e "==============================="
 echo -e "PAYLOAD"                                                          
-echo -e "GET wss://[host]/ HTTP/1.1[crlf]Host: [proxy][crlf]Upgrade: websocket[crlf][crlf]"
+echo -e "GET wss://${domain}/ HTTP/1.1[crlf]Host: [proxy][crlf]Upgrade: websocket[crlf][crlf]"
 echo -e "==============================="
 echo -e "SETTING PROXY HOST"
 echo -e "bug.com:443"
 echo -e "==============================="
 echo -e "SETING HOST SSH"               
 echo -e "$domain:443@$Login:$Pass"
+echo -e "==============================="
 
 ###################################
 TOKEN=$(cat /etc/lukman/bot_token)
@@ -62,4 +63,3 @@ MESSAGE="<pre>┌─────────────────────
 MESSAGE=$(echo "$MESSAGE" | sed "s/\$lastdomain/$lastdomain/g" | sed "s/\$Login/$Login/g")
 curl -s -X POST "https://api.telegram.org/bot$TOKEN/sendMessage" -d "chat_id=$CHAT_ID" -d "parse_mode=HTML" -d "text=$MESSAGE" > /dev/null
 ###################################
-echo -e "==============================="
