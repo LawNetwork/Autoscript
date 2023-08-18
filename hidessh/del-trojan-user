@@ -18,7 +18,7 @@ output_upper=$(echo "$output" | tr '[:lower:]' '[:upper:]')
 lastdomain="$output_upper"
 
 MESSAGE="<pre>┌─────────────────────────┐
-     • VMESS INFORMATION •
+     • TROJAN INFORMATION •
 └─────────────────────────┘
 ┌─────────────────────────┐
   ISP      :\$lastdomain
