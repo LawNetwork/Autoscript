@@ -52,7 +52,7 @@ output_upper=$(echo "$output" | tr '[:lower:]' '[:upper:]')
 lastdomain="$output_upper"
 
 MESSAGE="<pre>┌─────────────────────────┐
-         SSH INFORMATION
+      • SSH INFORMATION •
 └─────────────────────────┘
 ┌─────────────────────────┐
   ISP      :\$lastdomain
