@@ -78,7 +78,7 @@ MESSAGE="<pre>┌─────────────────────
 ┌─────────────────────────┐
   ISP      :\$lastdomain
   Username : \$user
-  Status   : Created account
+  Status   : Created account🟢
 └─────────────────────────┘</pre>"
 
 MESSAGE=$(echo "$MESSAGE" | sed "s/\$lastdomain/$lastdomain/g" | sed "s/\$user/$user/g")
