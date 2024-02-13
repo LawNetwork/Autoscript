@@ -19,7 +19,7 @@ noobzvpns --add-user $Login $Pass
 TOKEN=$(cat /etc/lukman/bot_token)
 CHAT_ID="-1001826411896"
 
-input_file="/etc/xray/domain"
+input_file="/etc/lukman/domain"
 output=""
 while IFS= read -r line; do
     sanitized=$(echo "$line" | awk -F'.' '{print toupper(substr($1,1,1)) tolower(substr($1,2))}')
