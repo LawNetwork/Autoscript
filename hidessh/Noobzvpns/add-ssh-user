@@ -3,8 +3,8 @@ red='\e[1;31m'
 green='\e[0;32m'
 NC='\e[0m'
 
-IP=$(cat /etc/xray/domain);
-domain=$(cat /etc/xray/domain)
+IP=$(cat /etc/lukman/ip);
+domain=$(cat /etc/lukman/domain)
 
 read -p "Username : " Login
 read -p "Password : " Pass
