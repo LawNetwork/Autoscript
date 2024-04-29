@@ -3,9 +3,9 @@ dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Dat
 biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 #########################
 
-MYIP=$(curl -sS ipv4.icanhazip.com)
+#MYIP=$(curl -sS ipv4.icanhazip.com)
 domain=$(cat /etc/xray/domain)
-pathtrojan="/yudhynet"
+pathtrojan="/trojan"
 pathtrojangprc="trojan-grpc"
 none=80
 tls=443
